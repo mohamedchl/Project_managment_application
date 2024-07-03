@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "registration/base.html" %}
+
+    {% load i18n jazzmin %}
+    {% get_jazzmin_settings request as jazzmin_settings %}
+    {% get_jazzmin_ui_tweaks as jazzmin_ui %}
+
+    {% block content %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Include Bootstrap CSS and JS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <form method="post" action="" id="registrationForm">
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <input type="{{ form.matricule.widget.input_type }}" name="{{ form.matricule.name }}"  id="{{ form.matricule.id_for_label }}" class="form-control" placeholder="Matricule.." required>
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                    </div>
+                </div>
+            </div>
+            {% if form.matricule.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.matricule.errors|join:", " }}
+                </div>
+            {% endif %}
+            
+            <div class="input-group mb-3">
+                <input type="password" name="{{ form.password1.name }}"  id="{{ form.password1.id_for_label }}" class="form-control" placeholder="Mot de passe.." required>
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            {% if form.password1.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.password1.errors|join:", " }}
+                </div>
+            {% endif %}
+            
+            <div class="input-group mb-3">
+                <input type="password" name="{{ form.password2.name }}"  id="{{ form.password2.id_for_label }}" class="form-control" placeholder="Confirmer Mot de passe.." required>
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            {% if form.password2.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.password2.errors|join:", " }}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn {{ jazzmin_ui.button_classes.primary }} btn-block" style="background-color: #2e4054; border-color: #2e4054;">Enregistrer</button>
+            <p>Vous avez un mot de passe? <a href="{% url 'admin:login' %}" style="color: #389376;">Connecter ici</a>.</p>
+        </form>
+
+        {% if success_message %}
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body text-center">
+                    <h5 class="modal-title text-success" id="successModalLabel">Success</h5>
+                    <p>Le mot de passe est successivement enregistré et votre compte est active. Votre username est : <span style="color: #389376; font-weight: 600;">{{ username }}</span></p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'admin:login' %}" class="btn btn-success">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#successModal').modal('show');
+        });
+    </script>
+{% endif %}
+
+    </body>
+</html>
+{% endblock %}

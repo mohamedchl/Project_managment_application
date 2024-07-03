@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "projetfinetudebot-xfmv",
+  "private_key_id": "8a06cc8185509b9b5dcf2744a5697a285446a1d6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCxsBvUYjM5K9dz\n7HvjkC8fFYL8kY2pn3OPThg6bqN7J5H6OyTA/tqbcvC32dO0bYu3h4XDWzugABbJ\ngU71zN3gVPjhMmk8OV/sZqbmnprVkJydwcElZXmTLpi8SbXFYa/D22iCqTHHt8Op\nZR4GWSMGLAKxgYcO4in5cmM9oUDgy/hG5aIxUK9V9pgfHVc0+CMMcx28q1++D4EU\nS+mIxb83jTDSBgyueCc597WhXL78ABE7r8+1ulp/SmTxITlq46VxY1/wad0nYF4O\nQMfLuW21olOcH2+qUZJmV5Ne2XSEnzxAujI3q5V2nmb2/BzJI8STKZjrkOu7grN/\nzdCg13K5AgMBAAECggEACofRXmjjeEPs5OXjAb2NzV3NAYLuzlqw0pFiRjRAZBAY\nSqguqXFxKz1Inty9+zdyzFGvz8AcbIMU1qRfNZoKnDzs8wu1yOftk2kSAyDrNDT5\n0y+kbr7w0ZQ1YRNNPoFnlUfvja7RUHDHm8ZuXRnzRW5eSn7OrkchDbOFxiVEXw4d\n+6U/EICVS22RsXtI98vL2YJ2THpNLfW1SFGVO+P0jcHw7E1gYPj0qpLUa0OQWfIh\nXUIDF/UqUSNvr4BIGHuMjjZMUxBHR1oCeT1E2mbcU8OKlp1J9ZRSiR2Vkii4ejyt\njdQ3DBNB0Fw2RZYbkXJfOHdH2w9GmbxHtNgFC5Th8QKBgQD35yaZ0P+8WbDIdWU6\nyY23J9MzxwiI6O4dpNQYrWLciUzQdwPBe1RHDBAn3IAUMKXyd8yQ5OOXcP7mMfTG\nGnSFFaKd0tXjDZOoWcHUCDA9oH7QNb2cBl7NFBmTTbL6MlPJltMUD63x2I4hdPrL\n6GIzPaQPJFlRzSNHwZGbnbjftwKBgQC3fdpF9D6joJlQHvof6FVaaAgRDIihCBZd\ngGqH/l9txdCtdLHWP/iHoBiohdoOWlkcbsVuJGXFiltCcSL8XA7TyPpUWWLI0stF\ncQUCjLdo22iyc08R73bZhvaji1S0p+dGu7bQGRMiMU7YgOzwablZyArr9rsNE+Jb\nli3Yf7JhDwKBgHZ62S4Gf1MropwLz3fLQJnaxMwoQeH9QWCVmHC63Vb9n+K6Hudn\n5B2YnFgQwH3lykoaC4DshAGrFYg7M/tCRZIdhvza+TJtGLcLPuHxj+zEOheUt6xM\nNx7YjmiiZ/m/99+O4A7kd4Pwte0zlXHC/Lv0p+Y8vxujaUswLkErnmH9AoGBAKj5\nfMhu5EBK5OSjojNAAVn/822/3RJuICp615/k4Hx2bnVNwXdL8dLz28FVgjk1elp0\np9uGKTKA9wl4pn8/R2hA7EZBCndlp0uLiNGQRFaLtx6ekXIy03/+iaKR7K9w78pz\nkyaP8M7MGY/HKms68TV8wpIJ5LdmWE1/PzjgX6SBAoGARTGqqW0C2IeLNCU0rHld\ndHnH8XUo00tPrvIkhcdvH8ud9IecjAhr570iEqR91ilwsXVnybpYmN3tVHoYDwtn\niv0yxlkiq72pR7vEmTtVeWGp5vxFS4yeYj/F8uQGRq88wyF96pLDl44ijpFE5Ki8\nV2L1yByurD9vM3oG23VPg9c=\n-----END PRIVATE KEY-----\n",
+  "client_email": "projetfinetude@projetfinetudebot-xfmv.iam.gserviceaccount.com",
+  "client_id": "107609312911779036281",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/projetfinetude%40projetfinetudebot-xfmv.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
