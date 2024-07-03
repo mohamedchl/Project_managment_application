@@ -1,0 +1,11 @@
+{# jazzmin/employe_tache_form.html #}
+{% extends 'jazzmin/form.html' %}
+
+{% block form_content %}
+    {{ form.as_p }}
+
+    # Remove this line if not using Crispy Forms
+    <script>
+        document.getElementById('submit-btn').disabled = true;  
+    </script>
+{% endblock form_content %}

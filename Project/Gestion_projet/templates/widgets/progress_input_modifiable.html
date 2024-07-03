@@ -1,0 +1,5 @@
+{% load static %}
+<input type="{{ widget.type }}" name="{{ widget.name }}" value="{{ widget.value }}" {% include "django/forms/widgets/attrs.html" %} style="width: 250px;">
+<div id="{{ widget.name }}">{{ widget.value }}%</div>
+
+<script src="{% static 'js/progress_input.js' %}"></script>

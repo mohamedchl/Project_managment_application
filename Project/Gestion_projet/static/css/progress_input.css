@@ -1,0 +1,6 @@
+.progress-input {
+    width: 250px; 
+    height: 10px; 
+    background: linear-gradient(to right, red, yellow, green); 
+    border-radius: 5px; 
+}

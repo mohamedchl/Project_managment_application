@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="fr" >
+<head>
+    
+        
+        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!--  Prevent admin panel being crawled by search engines -->
+    <meta name="robots" content="none, noarchive">
+
+    <title>Sélectionnez l’objet projet à changer | Gestion de projet</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/static/vendor/fontawesome-free/css/all.min.css">
+
+    <!-- Bootstrap and adminLTE -->
+    <link rel="stylesheet" href="/static/vendor/adminlte/css/adminlte.min.css" id="adminlte-css">
+
+    <!-- Bootswatch theme -->
+    
+        <link rel="stylesheet" href="/static/vendor/bootswatch/flatly/bootstrap.min.css" id="jazzmin-theme" />
+    
+
+    
+
+    <!-- Custom fixes for django -->
+    <link rel="stylesheet" href="/static/jazzmin/css/main.css">
+
+    
+
+    <!-- favicons -->
+    <link rel="shortcut icon" href="/static/vendor/adminlte/img/AdminLTELogo.png" type="image/png">
+    <link rel="icon" href="/static/vendor/adminlte/img/AdminLTELogo.png" sizes="32x32" type="image/png">
+
+    
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    
+
+    
+     
+    <link rel="stylesheet" href="/static/vendor/select2/css/select2.min.css">
+
+    
+        <script type="text/javascript" src="/admin/jsi18n/"></script>
+    
+    
+    
+
+    
+     
+    <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script src="/static/admin/js/jquery.init.js"></script>
+<script src="/static/admin/js/core.js"></script>
+<script src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script src="/static/admin/js/actions.js"></script>
+<script src="/static/admin/js/urlify.js"></script>
+<script src="/static/admin/js/prepopulate.js"></script>
+<script src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+</head>
+<body class="hold-transition sidebar-mini   app-Gestion_projet model-projet change-list accent-primary theme-flatly " data-admin-utc-offset="0">
+
+<div class="wrapper">
+    
+            
+
+            <aside class="main-sidebar elevation-4 sidebar-dark-primary" id="jazzy-sidebar">
+                <a href="/admin/" class="brand-link " id="jazzy-logo">
+                    <img src="/static/vendor/adminlte/img/AdminLTELogo.png" alt="Gestion de projet Logo" class="img-circle brand-image elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light">Gestion de Projet</span>
+                </a>
+
+                <div class="sidebar">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="image">
+                            
+                                <i class="fas fa-inverse user-profile fa-user-circle"></i>
+                            
+                        </div>
+                        <div class="info">
+                            {% if user_is_admin%}
+                                <a href="/admin/auth/user/1/change/" class="d-block">admin</a>
+                            {% elif user_is_chefProjet %}
+                                <span class="d-block" style="color: white;">{{ request.user }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-collapsible="false">
+
+                            <li class="nav-item">
+                                <a href="/admin/" class="nav-link">
+                                    <i class="nav-icon fas fa-th-large"></i>
+                                    <p>Tableau de bord</p>
+                                </a>
+                            </li>
+                            <li class="nav-header" id="tables-de-bord-header">Tables de bord d'analyse</li>
+                            <li class="nav-item" id="projet-dashboard-item">
+                                <a href="/projet-dashboard/" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-line"></i> <p>Tables de bord des projets</p>
+                                </a>
+                            </li>
+                            <li class="nav-item" id="tache-dashboard-item">
+                                <a href="/tache-dashboard/" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-line"></i> <p>Tables de bord des taches</p>
+                                </a>
+                            </li>
+                            
+                            {% if user_is_admin%}
+                               <li class="nav-header">Authentification et autorisation</li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/auth/group/" class="nav-link">
+                                                <i class="nav-icon fas fa-users"></i> <p>Groupes</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/auth/user/" class="nav-link">
+                                                <i class="nav-icon fas fa-user"></i> <p>Utilisateurs</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                            {% endif %}
+                                
+                               <li class="nav-header">Gestion_Projet</li>
+                                    
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/comission/" class="nav-link">
+                                                <i class="nav-icon fas fa-calendar-alt"></i> <p>Comissions</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/document/" class="nav-link">
+                                                <i class="nav-icon fas fa-file-alt"></i> <p>Documents</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/employe/" class="nav-link">
+                                                <i class="nav-icon fas fa-users"></i> <p>Employes</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/etatprojet/" class="nav-link">
+                                                <i class="nav-icon fas fa-info-circle"></i> <p>Etat projets</p>
+                                            </a>
+                                        
+                                        </li>
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/etattache/" class="nav-link">
+                                                <i class="nav-icon fas fa-tasks"></i> <p>Etat taches</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/incident/" class="nav-link">
+                                                <i class="nav-icon fas fas fa-exclamation-triangle"></i> <p>Incidents</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/maitreouvrage/" class="nav-link">
+                                                <i class="nav-icon fas fa-landmark"></i> <p>Maitre ouvrages</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/marchet/" class="nav-link">
+                                                <i class="nav-icon fas fa-shopping-cart"></i> <p>Marchets</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/notificationseen/" class="nav-link">
+                                                <i class="nav-icon fas fa-circle"></i> <p>Notification seens</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/projet/" class="nav-link">
+                                                <i class="nav-icon fas fa-project-diagram"></i> <p>Projets</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/ressource/" class="nav-link">
+                                                <i class="nav-icon fas fa-cogs"></i> <p>Ressources</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/suiviincident/" class="nav-link">
+                                                <i class="nav-icon fas fa-tasks"></i> <p>Suivi incidents</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/suivitache/" class="nav-link">
+                                                <i class="nav-icon fas fa-tasks"></i> <p>Suivi taches</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                    
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/tache/" class="nav-link">
+                                                <i class="nav-icon fas fa-tasks"></i> <p>Taches</p>
+                                            </a>
+                                        
+                                        </li>
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/Gestion_projet/utilisationressource/" class="nav-link">
+                                                <i class="nav-icon fas fa-table"></i> <p>Utilisation ressources</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                
+                               <li class="nav-header">Jeton d&#x27;authentification</li>
+                                    
+                                    
+                                        <li class="nav-item">
+                                            
+                                            <a href="/admin/authtoken/tokenproxy/" class="nav-link">
+                                                <i class="nav-icon fas fa-circle"></i> <p>Jetons</p>
+                                            </a>
+                                        
+                                        </li>
+                                    
+                                
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+        
+        
+    
+
+    <div class="content-wrapper" >
+        
+            
+            <div class="content border-bottom mb-2">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-auto d-flex flex-grow-1 align-items-center">
+                            <h1 class="h4 m-0 pr-3 mr-3 border-right">Le tableaux de bord des Projets</h1>
+                            
+  
+
+                        </div>
+                        <div class="col-12 col-md-auto d-flex align-items-center justify-content-end page-actions">
+                        
+                        </div>
+                    
+                                    </div>
+                                </div>
+                            </div>
+                            
+    
+
+{% block content %}
+
+<style>
+    form {
+        width: 70%;
+        margin: 0 auto; /* Centers the form horizontally */
+        margin-bottom: 00px; /* Reduce space between form and divs below */
+    }
+
+    form p {
+        display: none; /* Hide the labels */
+    }
+
+    .btnnnn {
+        display: inline-block; /* Makes the button inline-block to fit content */
+        margin-top: 10px; /* Adds some space between the form fields and the button */
+        background-color: rgba(54, 162, 235, 0.5); /* Sets button background color */
+        border: none; /* Removes button border */
+        color: white; /* Sets text color to white */
+        padding: 10px 20px; /* Adds padding to the button */
+        cursor: pointer; /* Changes cursor to pointer on hover */
+       
+    }
+
+    .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px; /* Adds space between form elements */
+    }
+
+    .canvas-container {
+        margin-right: 20px;
+        margin-left: 20px;
+        flex: 1; /* Allow input field to take up remaining space */
+    }
+
+    input[type="text"] {
+        width: 100%; /* Make the input field longer */
+        padding: 10px; /* Add padding to the input field */
+        box-sizing: border-box; /* Include padding and border in input width */
+    }
+    select {
+        width: 100%; /* Make the input field longer */
+        padding: 10px; /* Add padding to the input field */
+        box-sizing: border-box; /* Include padding and border in input width */
+    }
+
+    canvas {
+        border: 1px solid #ccc; /* Add border to canvas as needed */
+    }
+
+    .description {
+        flex: 1; /* Allow the description to grow to fill available space */
+        margin-left: 20px; /* Adds space between the input and button */
+    }
+    .error {
+    color: red; /* Sets text color to red */
+    font-size: 14px; /* Adjust font size as needed */
+    margin-left: 30%;
+    font-style: italic;
+   
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% if not chef_projet_un_projet %}
+<form method="post">
+    {% csrf_token %}
+    <div class="info">
+        <div class="canvas-container">
+            {{ form.projet_name }}
+        </div>
+        <button type="submit" class="btnnnn">Submit</button>
+        
+    </div>
+</form>
+
+{% if message %}
+            <p class="error">-{{ message }}</p>
+        {% endif%}
+        {% endif%}
+    
+
+        {% if not form_valid %}
+        <h4 style="margin-left: 100px;"><li>Le nombre total des projets est : <span style="color: red;">{{nbr_projets}}</span> projets</li></h4>
+        <div class="grid-container">
+            <div class="info">
+                <div class="description">
+                    <h3>Le nombre des projets par les états</h3>
+                    <p>Dans ce graphe, le nombre des projets par les états précisés soit commencé ou finis ou autre.
+                    </p>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="myChart1" width="500px" height="350px"></canvas>
+                </div>
+                
+            </div>
+            <div class="info">
+                
+                <div class="canvas-container">
+                    <canvas id="myChart2" width="500px" height="350px"></canvas>
+                </div>
+                <div class="description">
+                    <h3>Le nombre des projets par les maitres ouvrages</h3>
+                    <p>Dans ce graphe, le nombre total des projets par les 3 maitres ouvrages.</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="description">
+                    <h3>Le nombre des projets par les durées précisés</h3>
+                    <p>Dans ce graphe, le nombre des projets par les durées précisés dans les infos des projets.
+                    </p>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="myChart3" width="500px" height="350px"></canvas>
+                </div>
+                
+            </div>
+            <div class="info">
+                <div class="canvas-container">
+                    <canvas id="myChart4" width="500px" height="350px"></canvas>
+                </div>
+                <div class="description">
+                    <h3>Le nombre des projets créés dans les 5 années passées</h3>
+                    <p>Dans ce graphe, le nombre total des projets créés de {{ years|first }} jusqu'à {{ years|last }}.</p>
+                </div>
+
+                
+            </div>
+            <div class="info">
+                <div class="description">
+                    <h3>Le nombre des projets par les états d'avancements</h3>
+                    <p>Dans ce graphe, le nombre total des projets par leur avanceement pour plus details voir une analyse spécifique.</p>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="myChart5" width="500px" height="350px"></canvas>
+                </div>
+
+
+                
+            </div>
+        </div>
+        <script>
+            const ctx = document.getElementById('myChart4');
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for year in years %}'{{year}}',{% endfor %}],
+            datasets: [{
+                label: 'Nombre des projets',
+                data: [{% for p in projet_count_by_year %}{{ p }},{% endfor %}],
+                borderWidth: 1,
+                backgroundColor: [
+                    "rgba(54, 162, 235, 0.5)", //zre9
+                    "rgba(255, 99, 132, 0.5)",  // 7mer
+                    "rgba(255, 206, 86, 0.5)", //sfer
+                    "rgba(75, 192, 192, 0.5)", //khder
+                    "rgba(153, 102, 255, 0.5)", // violet
+                ],
+                fill: true,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    
+    const ctx2 = document.getElementById('myChart2');
+    
+    new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: [{% for m in MO %}'{{m}}',{% endfor %}],
+            datasets: [{
+                label: 'Nombre des projets',
+                data: [{% for p in projet_count_by_MO %}{{ p }},{% endfor %}],
+                borderWidth: 1,
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.5)",
+                    "rgba(54, 162, 235, 0.5)",
+                    "rgba(255, 206, 86, 0.5)",
+                ],
+                fill: true,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    
+    const ctx3 = document.getElementById('myChart3');
+    
+    new Chart(ctx3, {
+        type: 'bar',
+        data: {
+            labels: [{% for d in durees %}'{{d}}',{% endfor %}],
+            datasets: [{
+                label: 'Nombre des projets',
+                data: [{% for p in projet_count_by_duree %}{{ p }},{% endfor %}],
+                borderWidth: 1,
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.5)",
+                    "rgba(54, 162, 235, 0.5)",
+                    "rgba(255, 206, 86, 0.5)",
+                ],
+                fill: true,
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+        }
+    });
+    
+    const ctx4 = document.getElementById('myChart1');
+    
+    new Chart(ctx4, {
+        type: 'doughnut',
+        data: {
+            labels: [{% for e in etats %}'{{e}}',{% endfor %}],
+            datasets: [{
+                label: 'Nombre des projets',
+                data: [{% for p in projet_count_by_etat %}{{ p }},{% endfor %}],
+                borderWidth: 1,
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.5)",
+                    "rgba(54, 162, 235, 0.5)",
+                    "rgba(75, 192, 192, 0.5)",
+                ],
+                fill: true,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    const ctx5 = document.getElementById('myChart5');
+    
+    new Chart(ctx5, {
+        type: 'doughnut',
+        data: {
+            labels: [{% for av in avancement_choices %}'{{av}}',{% endfor %}],
+            datasets: [{
+                label: 'Nombre des projets',
+                data: [{% for p in projet_count_by_avancement %}{{ p }},{% endfor %}],
+                borderWidth: 1,
+                backgroundColor: [
+                "rgba(54, 162, 235, 0.5)", //zre9
+                "rgba(255, 99, 132, 0.5)",  // 7mer
+                "rgba(255, 206, 86, 0.5)", //sfer
+                "rgba(75, 192, 192, 0.5)", //khder
+                "rgba(153, 102, 255, 0.5)", // violet
+                "rgba(255, 165, 0, 0.5)" , // orange
+                ],
+                fill: true,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
+        
+        {% elif form_valid or chef_projet_un_projet  %}
+        <div class="grid-container">
+            <div class="info">
+                <div class="description">
+                    <h3>L'etat d'avancement de projet <span style="font-weight: 800;">"{{projet.nom_projet}}"</span>:</h3>
+                    
+                    <li>l'avancement de progress le cas normal doit etre <span style="color: blue;font-size: 20px;font-weight: 800; ">{{ avancement_normal }}%</span> par jour.</li>
+                    <li>l'etat d'avancement est <span style="color: {{avnc_color}};font-size: 20px;font-weight: 800; ">{{ avancement }}</span>.</li>
+                    {% if not projet_non_finis%}
+                    {% if not projet_pas_commence %}
+                    <li>l'avancement de progress est <span style="color: {{avnc_color}};font-size: 20px;font-weight: 800;"> {{progressParJour}}%</span> par jour.</li>
+                    <li>A ce rythme la date de fin de projet sera etre <span style="font-size: 20px;font-weight: 800;">{{ dateF }}</span> tel que la date précisé été <span style="font-size: 20px;font-weight: 800;">{{ projet.date_fin}}</span> alors la differences est <span style="color: {{avnc_color}};font-size: 20px;font-weight: 800;">{{dif_jour}}</span> jours.</li>
+                    {% if projet.avancement == '4' or projet.avancement == '5' %}
+                        <li style="color: {{avnc_color}};font-weight: 800;">Vous devez <span style="text-decoration: underline;">modifier</span> la date fin de projet ou controler l'avancement.</li>
+                    {% endif %}
+                    {% else %}
+                    <li>le progress de projet est <span style="color: red;font-size: 20px;font-weight: 800;">0% </span>, Vous devez commencer et entrer dans le rythme d'avancement .</li>
+                    
+                    {% endif %}
+                    {% endif %}
+
+                </div>
+            
+            </div>
+            {% if tache_exist %}
+            <div class="info">
+                <div class="description">
+                    <h3>L'analyse des taches</h3>
+                    <p>Dans ces graphes, le nombre des taches de projet <span style="font-weight: 800;">{{projet.nom_projet}}</span> par le paramètre choisi : </p>
+                    
+                    <select id="analysisParameter">
+                        <option value="type">Par type de tache</option>
+                        <option value="duree">Par durée de tache</option>
+                        <option value="employes">Par nombre des employés</option>
+                        <option value="avancement">Par avancement de tache</option>
+                        <option value="sousTaches">Par nombre des sous-taches</option>
+                        <option value="incidents">Par nombre des incidents</option>
+                    </select>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="chart6" width="500px" height="350px"></canvas>
+                </div>
+            
+                
+            </div>
+            {% endif %}
+            {% if employe_exist %}
+            <div class="info">
+                <div class="canvas-container">
+                    <canvas id="chart7" width="500px" height="350px"></canvas>
+                </div>
+                <div class="description">
+                    <h3>L'analyse des Employés</h3>
+                    <p>Dans ces graphes, le nombre des employés de projet <span style="font-weight: 800;">{{projet.nom_projet}}</span> par le paramètre choisi : </p>
+                    
+                    <select id="analysisParameter1">
+                        <option value="poste">Par poste de l'employé</option>
+                        <option value="etat">Par l'état familiale de l'employé</option>
+                        <option value="taches">Par nombre des taches associé dans le projet</option>
+
+                    </select>
+                </div>
+     
+            </div>
+        {% endif %}
+
+            {% if comission_exist %}
+            <div class="info">   
+                <div class="description">
+                    <h3>L'analyse des Commissions</h3>
+                    <p>Dans ces graphes, le nombre des commissions de projet <span style="font-weight: 800;">{{projet.nom_projet}}</span> par le paramètre choisi : </p>
+                    <select id="analysisParameter2">
+                        <option value="dateC">Par date de création</option>
+                        <option value="typeC">Par l'type de commission</option>
+                    </select>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="chart8" width="500px" height="350px"></canvas>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if document_exist %}
+            <div class="info">
+                <div class="canvas-container">
+                    <canvas id="chart9" width="500px" height="350px"></canvas>
+                </div>
+                <div class="description">
+                    <h3>L'analyse des Documents</h3>
+                    <p>Dans ces graphes, le nombre des documents de projet <span style="font-weight: 800;">{{projet.nom_projet}}</span> par le paramètre choisi : </p>
+                    
+                    <select id="analysisParameter3">
+                        <option value="dateD">Par date de création</option>
+                        <option value="typeD">Par le type de document</option>
+
+                    </select>
+                </div>
+     
+            </div>
+        {% endif %}
+
+    </div>
+
+        {% endif %}
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>      
+    
+      <script>
+        const analysisParameterSelect = document.getElementById('analysisParameter');
+        const ctx6 = document.getElementById('chart6');
+        let myChart;
+
+        if (ctx6 && analysisParameterSelect) {
+        function updateChart() {
+            
+            const analysisParameter = analysisParameterSelect.value;
+    
+            // Define chart data based on the selected parameter
+            let chartData;
+            switch (analysisParameter) {
+                case 'type':
+                    chartData = {
+                        labels: [{% for x in type_tache %}'{{x}}',{% endfor %}],
+                        datasets: [{
+                            label: 'Nombres des taches',
+                            data: [{% for x in count_type_tache %}{{x}},{% endfor %}],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgba(255, 206, 86, 0.5)", //sfer
+                                "rgba(54, 162, 235, 0.5)", //zre9
+                            ],
+                        }]
+                    };
+                    break;
+                case 'duree':
+                    chartData = {
+                        labels: [{% for x in duree_tache %}'{{x}}',{% endfor %}],
+                        datasets: [{
+                            label: 'Nombres des taches',
+                            data: [{% for x in count_duree_tache %}{{x}},{% endfor %}],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(255, 206, 86, 0.5)", //sfer
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                                "rgba(153, 102, 255, 0.5)", // violet
+                                "rgba(255, 165, 0, 0.5)" , // orange
+                            ],
+                        }]
+                    };
+                    break;
+                case 'employes':
+                    chartData = {
+                        labels: [{% for x in type_employe_tache %}'{{x}}',{% endfor %}],
+                        datasets: [{
+                            label: 'Nombres des taches',
+                            data: [{% for x in count_employe_tache %}{{x}},{% endfor %}],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(255, 206, 86, 0.5)", //sfer
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                                "rgba(153, 102, 255, 0.5)", // violet
+                                "rgba(255, 165, 0, 0.5)" , // orange
+                            ],
+                        }]
+                    };
+                    break;
+                case 'avancement':
+                    chartData = {
+                        labels: [{% for x in type_progress_tache %}'{{x}}',{% endfor %}],
+                        datasets: [{
+                            label: 'Nombres des taches',
+                            data: [{% for x in count_progress_tache %}{{x}},{% endfor %}],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(255, 206, 86, 0.5)", //sfer
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                                "rgba(153, 102, 255, 0.5)", // violet
+                                "rgba(255, 165, 0, 0.5)" , // orange
+                            ],
+                        }]
+                    };
+                    break;
+                case 'sousTaches':
+                    chartData = {
+                        labels: [{% for x in type_soustache_tache %}'{{x}}',{% endfor %}],
+                        datasets: [{
+                            label: 'Nombres des taches',
+                            data: [{% for x in count_soustache_tache %}{{x}},{% endfor %}],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(255, 206, 86, 0.5)", //sfer
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                                "rgba(153, 102, 255, 0.5)", // violet
+                                "rgba(255, 165, 0, 0.5)" , // orange
+                            ],
+                        }]
+                    };
+                    break;
+                case 'incidents':
+                    chartData = {
+                        labels: [{% for x in type_incident_tache %}'{{x}}',{% endfor %}],
+                        datasets: [{
+                            label: 'Nombres des taches',
+                            data: [{% for x in count_incident_tache %}{{x}},{% endfor %}],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(255, 206, 86, 0.5)", //sfer
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                                "rgba(153, 102, 255, 0.5)", // violet
+                                "rgba(255, 165, 0, 0.5)" , // orange
+                            ],
+                        }]
+                    };
+                    break;
+                default:
+                    // Handle default case or unsupported parameters
+                    break;
+            }
+    
+            // Destroy the previous chart instance if it exists
+            if (myChart) {
+                myChart.destroy();
+            }
+    
+            // Create a new chart with the updated data
+            myChart = new Chart(ctx6, {
+                type: 'pie',
+                data: chartData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    
+        // Add event listener to update the chart when the analysis parameter changes
+        analysisParameterSelect.addEventListener('change', updateChart);
+    
+        // Initial chart setup
+        updateChart();
+    }
+        const analysisParameterSelect1 = document.getElementById('analysisParameter1');
+
+    
+const ctx7 = document.getElementById('chart7');
+let myChart1;
+if (ctx7 && analysisParameterSelect) {
+function updateChart1() {
+    
+    const analysisParameter1 = analysisParameterSelect1.value;
+
+    // Define chart data based on the selected parameter
+    let chartData1;
+    switch (analysisParameter1) {
+        case 'poste':
+            chartData1 = {
+                labels: [{% for x in poste_employe %}'{{x}}',{% endfor %}],
+                datasets: [{
+                    label: 'Nombres des employés',
+                    data: [{% for x in count_poste_employe %}{{x}},{% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                    "rgba(255, 140, 0, 0.5)", // darkorange
+                    "rgba(255, 159, 64, 0.5)", // orangelight
+
+                                "rgba(255, 206, 86, 0.5)", //sfer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                                "rgba(153, 102, 255, 0.5)", // violet
+                                "rgba(255, 165, 0, 0.5)" , // orange
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(255, 0, 255, 0.5)", // fuchsia
+                                "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(218, 112, 214, 0.5)", // orchid
+                                "rgba(218, 165, 32, 0.5)", // goldenrod
+                                "rgba(255, 20, 147, 0.5)" // deeppink
+                    ],
+                }]
+            };
+            break;
+        case 'etat':
+            chartData1 = {
+                labels: [{% for x in etat_employe %}'{{x}}',{% endfor %}],
+                datasets: [{
+                    label: 'Nombres des employés',
+                    data: [{% for x in count_etat_employe %}{{x}},{% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                    "rgba(153, 102, 255, 0.5)", // violet
+
+                        "rgba(255, 159, 64, 0.5)", // orangelight
+
+                    ],
+                }]
+            };
+            break;
+        case 'taches':
+            chartData1 = {
+                labels: [{% for x in nbr_tache %}'{{x}}',{% endfor %}],
+                datasets: [{
+                    label: 'Nombres des employés',
+                    data: [{% for x in count_nbr_tache %}{{x}},{% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                    "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                    ],
+                }]
+            };
+            break;
+        default:
+            // Handle default case or unsupported parameters
+            break;
+    }
+
+    // Destroy the previous chart instance if it exists
+    if (myChart1) {
+        myChart1.destroy();
+    }
+
+    // Create a new chart with the updated data
+    myChart1 = new Chart(ctx7, {
+        type: 'doughnut',
+        data: chartData1,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Add event listener to update the chart when the analysis parameter changes
+analysisParameterSelect1.addEventListener('change', updateChart1);
+
+// Initial chart setup
+updateChart1();
+}
+
+const ctx8 = document.getElementById('chart8');
+const analysisParameterSelect2 = document.getElementById('analysisParameter2');
+
+let myChart2;
+if (ctx8 && analysisParameterSelect) {
+function updateChart2() {
+    
+    const analysisParameter2 = analysisParameterSelect2.value;
+
+    // Define chart data based on the selected parameter
+    let chartData2;
+    switch (analysisParameter2) {
+        case 'dateC':
+            chartData2 = {
+                labels: [{% for x in dates_commission %}'{{x}}',{% endfor %}],
+                datasets: [{
+                    label: 'Nombres des commissions',
+                    data: [{% for x in count_dates_commission %}{{x}},{% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: ["rgba(54, 162, 235, 0.5)"], //zre9
+                    fill: true,
+                }],
+                
+
+            };
+            break;
+        case 'typeC':
+            chartData2 = {
+                labels: [{% for x in type_commission %}'{{x}}',{% endfor %}],
+                datasets: [{
+                    label: 'Nombres des commissions',
+                    data: [{% for x in count_type_commission %}{{x}},{% endfor %}],
+                    borderWidth: 1,
+                                
+                    backgroundColor: [
+                    "rgba(54, 162, 235, 0.5)", //zre9
+                                "rgba(255, 99, 132, 0.5)",  // 7mer
+                                "rgba(75, 192, 192, 0.5)", //khder
+                    ], 
+                }]
+            };
+            break;
+        default:
+            // Handle default case or unsupported parameters
+            break;
+    }
+
+    // Destroy the previous chart instance if it exists
+    if (myChart2) {
+        myChart2.destroy();
+    }
+
+    // Create a new chart with the updated data
+    myChart2 = new Chart(ctx8, {
+        type: analysisParameter2 === 'dateC' ? 'line' : 'pie',
+        data: chartData2,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Add event listener to update the chart when the analysis parameter changes
+analysisParameterSelect2.addEventListener('change', updateChart2);
+
+// Initial chart setup
+updateChart2();
+}
+
+const ctx9 = document.getElementById('chart9');
+let myChart3;
+const analysisParameterSelect3 = document.getElementById('analysisParameter3');
+
+if (ctx9 && analysisParameterSelect) {
+function updateChart3() {
+    const analysisParameter3 = analysisParameterSelect3.value;
+
+    // Define chart data based on the selected parameter
+    let chartData3
+    switch (analysisParameter3) {
+        case 'dateD':
+            chartData3 = {
+                labels: [{% for x in dates_document %}'{{x}}',{% endfor %}],
+                datasets: [{
+                    label: 'Nombres des documents',
+                    data: [{% for x in count_dates_document %}{{x}},{% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: ["rgba(54, 162, 235, 0.5)"], //zre9
+                    fill: true,
+                }],
+                
+
+            };
+            break;
+        case 'typeD':
+            chartData3 = {
+                labels: [{% for x in type_document %}'{{x}}',{% endfor %}],
+                datasets: [{
+                    label: 'Nombres des documents',
+                    data: [{% for x in count_type_document %}{{x}},{% endfor %}],
+                    borderWidth: 1,
+                                
+                    backgroundColor: ["rgba(153, 102, 255, 0.5)",
+                    "rgba(75, 192, 192, 0.5)", //khder
+                    ], // violet
+                }]
+            };
+            break;
+        default:
+            // Handle default case or unsupported parameters
+            break;
+    }
+
+    // Destroy the previous chart instance if it exists
+    if (myChart3) {
+        myChart3.destroy();
+    }
+
+    // Create a new chart with the updated data
+    myChart3 = new Chart(ctx9, {
+        type: analysisParameter3 === 'dateD' ? 'line' : 'pie',
+        data: chartData3,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Add event listener to update the chart when the analysis parameter changes
+analysisParameterSelect3.addEventListener('change', updateChart3);
+
+// Initial chart setup
+updateChart3();
+}
+    </script>
+    
+    
+{% endblock %}
+</div>
+</div>
