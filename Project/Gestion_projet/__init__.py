@@ -1,1 +1,0 @@
-default_app_config = 'Gestion_projet.apps.Gestion_ProjetConfig'
